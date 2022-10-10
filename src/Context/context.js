@@ -102,7 +102,7 @@ function changeLoginState(data){
 
 function SortByAccending(){
   
-    let accendingSortedData =  userData.sort(function(a,b){
+    let accendingSortedData =  datas.sort(function(a,b){
         if(a.name < b.name){
             return -1;
           }
@@ -113,7 +113,7 @@ function SortByAccending(){
 }
 function SortBySalary(){
   
-    let sortedDataBySalary =  userData.sort(function(a,b){
+    let sortedDataBySalary =  datas.sort(function(a,b){
         if(a.salary < b.salary){
             return -1;
           }
@@ -122,7 +122,7 @@ function SortBySalary(){
      setDatas(sortedDataBySalary);    
 }
 function  SortByDecending(){
-     let sortedByDecendingData = userData.sort((a,b)=>{
+     let sortedByDecendingData = datas.sort((a,b)=>{
         if(a.name > b.name){
             return -1;
         }
