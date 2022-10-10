@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <div className='main text-white bg-primarycolor h-[100vh]'>
-      <h1 className='pt-10 text-center text-2xl'> Use email as ram@gmail and password as rambahadurA@1 to login or you can redirected to the regiter page</h1>
+      <h1 className='pt-10 text-center text-2xl'> Use email as ram@gmail.com and password as rambahadurA@1 to login or you can redirected to the regiter page</h1>
      
         <div className='flex flex-col justify-center items-center h-96'>
         <h1 className='text-center text-3xl'>Login to your EMS account</h1>
