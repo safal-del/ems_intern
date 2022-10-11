@@ -60,13 +60,13 @@ const Adduser = () => {
           <h2 className='text-center '> password must be 8-15 character and must contain one numeric value and one uppercase</h2>
       <div className='w-full items-center flex justify-center p-5'>
       <div className='flex flex-col gap-3 w-[60%] justify-center'>
-          <label>Name:</label><input className='rounded-lg' type="text" id= "name"  />
-          <label>Email:</label><input className='rounded-lg' type = "text" id= "email" />
-          <label>Address:</label><input className='rounded-lg' type = "text" id = "address"/>
-          <label>Salary:</label><input className='rounded-lg' type="text" id= "salary"/>
-          <label>Password:</label><input className='rounded-lg' type="text" id = "password" />
-          <label>Phonenumber:</label><input className='rounded-lg' type="number" id= "phonenumber"/>
-          <button className='bg-secondarycolor p-2 mt-1 rounded-lg'  onClick={AddUsers}>Add user</button>
+          <label>Name:</label><input className='rounded-lg text-black ' type="text" id= "name"  />
+          <label>Email:</label><input className='rounded-lg text-black' type = "text" id= "email" />
+          <label>Address:</label><input className='rounded-lg text-black' type = "text" id = "address"/>
+          <label>Salary:</label><input className='rounded-lg text-black' type="text" id= "salary"/>
+          <label>Password:</label><input className='rounded-lg text-black' type="text" id = "password" />
+          <label>Phonenumber:</label><input className='rounded-lg text-black' type="number" id= "phonenumber"/>
+          <button className='bg-secondarycolor p-2 mt-1 rounded-lg text-black'  onClick={AddUsers}>Add user</button>
           
 
             
