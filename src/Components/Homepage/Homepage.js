@@ -129,4 +129,4 @@ theme="light"
   )
 }
 
-export default Homepage
+export default Homepage;

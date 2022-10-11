@@ -12,6 +12,8 @@ const Home = () => {
   const ChangeTheState = initialState.changeLoginState;
   function ChangeTheLoginState(){
     ChangeTheState(false);
+    localStorage.clear();
+    window.location.reload();
    }
 
   return (

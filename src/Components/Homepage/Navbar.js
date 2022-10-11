@@ -24,7 +24,9 @@ const Navbar = () => {
 
    }
    function ChangeTheLoginState(){
-    ChangeTheState(false);
+    // ChangeTheState(false);
+    localStorage.removeItem("data");
+    window.location.reload();
    }
    
 
@@ -36,7 +38,7 @@ const Navbar = () => {
           <div className='flex justify-between h-16 items-center pl-10 pr-10 '>
            <h1 className='text-3xl text-white font-semibold'><Link to="/">EMS</Link></h1>
             <div className='flex'>
-            <input className='rounded w-96' type= "text" placeholder='search user' id = "searchuserinput" />
+            <input className='rounded w-96' type= "text" placeholder='search user (first letter should be capital)' id = "searchuserinput" />
             <div className='bg-white rounded w-10 flex justify-center'><FaSearch onClick={Searchuser} className='mt-2 hover:cursor-pointer' style={{color:"#1034A6", fontSize:"23px"}} /></div>                       
             </div>
             <div className='flex justify-between w-56'>

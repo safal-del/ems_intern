@@ -28,6 +28,8 @@ const Login = () => {
          data.forEach((items)=>{
             if(email=== items.email && password === items.password){
               ChangeTheState(true);
+               localStorage.setItem("data", JSON.stringify({email:email, password:password}));
+               window.location.reload();
             }
             
           });
