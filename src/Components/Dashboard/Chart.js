@@ -8,6 +8,8 @@ const COLOR = {
   text: '#3D4051',
   gray: '#EDF0F1',
 };
+let valueofchartage10_20 = localStorage.getItem("piedata");
+console.log(valueofchartage10_20);
 
 let combo = {};
 
@@ -30,7 +32,7 @@ combo.option = {
         type: 'pie',
         radius: '50%',
         data: [
-          { value: 1048, name: '10-20' },
+          { value: valueofchartage10_20, name: '10-20' },
           { value: 735, name: '20-30' },
           { value: 580, name: '30-40' },
           { value: 600, name: '40-50' },

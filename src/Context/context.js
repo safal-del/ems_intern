@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { addItem, getItems, editItem ,deleteItem } from "../Components/localstorage";
+import { addItem, getItems, editItem ,deleteItem,increasePieChartValue } from "../Components/localstorage";
 import { data } from '../Userdata'
 export const contextApi = createContext();
 
@@ -29,6 +29,9 @@ const StateContext = ({ children }) => {
       Phonenumber: Phonenumber,
     });
     setUsers(users)
+     
+    increasePieChartValue("piedata", 2000);
+    
   }
 
 

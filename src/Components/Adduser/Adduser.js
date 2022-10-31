@@ -41,6 +41,7 @@ const Adduser = () => {
     }
     
     else{
+        
       Adduser(name,email,address,salary,password,Phonenumber);
       toast("user added")
       setTimeout(()=>{

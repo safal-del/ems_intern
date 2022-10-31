@@ -26,3 +26,17 @@ export function getItems(key) {
   initialData = initialData ? JSON.parse(initialData) : [];
   return initialData;
 }
+
+export function increasePieChartValue(key, value){
+   
+//  let data =  localStorage.getItem(key);
+//  let parseddata = data ? parseInt(value) : 0;
+   localStorage.setItem(key, JSON.stringify(parseInt(value +30)));
+   window.location.reload();
+  //  console.log(parseddata); 
+
+  
+  
+   
+  
+}

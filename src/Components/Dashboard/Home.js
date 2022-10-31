@@ -12,7 +12,7 @@ const Home = () => {
   const ChangeTheState = initialState.changeLoginState;
   function ChangeTheLoginState(){
     ChangeTheState(false);
-    localStorage.clear();
+    localStorage.removeItem("logindata");
     window.location.reload();
    }
 
