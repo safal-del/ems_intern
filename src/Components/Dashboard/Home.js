@@ -37,7 +37,7 @@ const Home = () => {
           <div className='flex items-center justify-center gap-3 '>
             <FaTable />
           <h1>Dashboard</h1>
-          </div>
+          </div>  
           <div className='flex items-center justify-center gap-3 '>
             <FaPersonBooth />
           <h1>attendence</h1>

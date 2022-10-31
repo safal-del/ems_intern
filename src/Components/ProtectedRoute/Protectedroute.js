@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom'
 const Protectedroute = () => {
   const initialstate = useContext(contextApi)
   const currentState = initialstate.loginState;
-  const [newState,setState] = useState(false);
+  const [newState,setState] = useState(true);
 
   useEffect(()=>{
      let localdata = localStorage.getItem("data");

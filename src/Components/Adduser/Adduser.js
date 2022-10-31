@@ -13,7 +13,8 @@ const Adduser = () => {
   const datas = initialState.datas;
   const navigate = useNavigate();
 
-  const [error, setError] = useState("");
+  const [passworderror, setPasswordError] = useState("");
+  const [Emailerror, setEmailError ] = useState("");
 
   
 
@@ -29,18 +30,22 @@ const Adduser = () => {
     const Phonenumber = document.getElementById("phonenumber").value;
    let validating = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
-    if(password.match(validating) && email.length>0 && Phonenumber.length<=10){
-
+    // if(password.match(validating)){
+    //    setPasswordError("password must contain 8 character special caharcter and one uppercase");
+       
+   
+    
+    // }
+     if(email.length !==13){
+       setEmailError("email is error");
+    }
+    
+    else{
       Adduser(name,email,address,salary,password,Phonenumber);
       toast("user added")
       setTimeout(()=>{
         navigate("/")
       },2000)
-
-
-    }
-    else{
-      setError("Fill up with requirement");
     }
     
 
@@ -61,10 +66,13 @@ const Adduser = () => {
       <div className='w-full items-center flex justify-center p-5'>
       <div className='flex flex-col gap-3 w-[60%] justify-center'>
           <label>Name:</label><input className='rounded-lg text-black ' type="text" id= "name"  />
-          <label>Email:</label><input className='rounded-lg text-black' type = "text" id= "email" />
+          <label>Email:</label><input className='rounded-lg text-black' type = "email" id= "email" />
+          <div className='text-red-700'>{Emailerror}</div>
           <label>Address:</label><input className='rounded-lg text-black' type = "text" id = "address"/>
+          
           <label>Salary:</label><input className='rounded-lg text-black' type="text" id= "salary"/>
-          <label>Password:</label><input className='rounded-lg text-black' type="text" id = "password" />
+          <label>Password:</label><input className='rounded-lg text-black' type="password" id = "password" />
+          <div className='text-red-700'>{passworderror}</div>
           <label>Phonenumber:</label><input className='rounded-lg text-black' type="number" id= "phonenumber"/>
           <button className='bg-secondarycolor p-2 mt-1 rounded-lg text-black'  onClick={AddUsers}>Add user</button>
           
@@ -72,7 +80,7 @@ const Adduser = () => {
             
          </div>
       </div>
-      <p className='text-center text-white'>{error}</p>
+      <p className='text-center text-red-700'></p>
       <ToastContainer
         position="top-center"
         autoClose={1000}

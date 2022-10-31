@@ -10,10 +10,16 @@ const Edituser = () => {
     const initialState = useContext(contextApi);
     const index = initialState.editIndex;
     const Edit = initialState.EditUser;
+    const user = initialState.users;
     const [error,setError] = useState("");
     console.log(index);
     const navigate = useNavigate();
-
+    const name = user.at(index).name;
+    const email = user.at(index).email;
+    const address = user.at(index).address;
+    const salary = user.at(index).salary
+    const phone = user.at(index).Phonenumber
+    console.log(name);
     function Useredited(){       
     const name = document.getElementById("names").value;
     const email = document.getElementById("emails").value;
@@ -50,12 +56,12 @@ const Edituser = () => {
       <h2 className='text-center '> password must be 8-15 character and must contain one numeric value and one uppercase</h2>
   <div className='w-full items-center flex justify-center p-5'>
   <div className='flex flex-col gap-3 w-[60%] justify-center '>
-      <label>Name:</label><input className='  text-black rounded-lg' type="text" id= "names"  />
-      <label>Email:</label><input className=' text-black rounded-lg' type = "text" id= "emails" />
-      <label>Address:</label><input className=' text-black rounded-lg' type = "text" id = "addresss"/>
-      <label>Salary:</label><input className=' text-black rounded-lg' type="text" id= "salarys"/>
+      <label>Name:</label><input className='  text-black rounded-lg' type="text" id= "names" placeholder= {name} />
+      <label>Email:</label><input className=' text-black rounded-lg' type = "text" id= "emails" placeholder={email} />
+      <label>Address:</label><input className=' text-black rounded-lg' type = "text" id = "addresss" placeholder={address}/>
+      <label>Salary:</label><input className=' text-black rounded-lg' type="text" id= "salarys" placeholder= {salary}/>
       <label>Password:</label><input className=' text-black rounded-lg' type="text" id = "passwords" />
-      <label>Phonenumber:</label><input className=' text-black rounded-lg' type="number" id= "phonenumbers"/>
+      <label>Phonenumber:</label><input className=' text-black rounded-lg' type="number" id= "phonenumbers" placeholder={phone}/>
       <button className='bg-secondarycolor p-2 mt-1  text-white rounded-lg'  onClick={Useredited}>Edit   user</button>
       
 

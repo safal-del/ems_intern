@@ -1,170 +1,140 @@
 import { createContext, useState } from "react";
-import { data } from "../Userdata";
-
+import { addItem, getItems, editItem } from "../Components/localstorage";
+import { data } from '../Userdata'
 export const contextApi = createContext();
 
-const StateContext = ({children}) =>{
-    
-  const[userData, setUsers] = useState(data);  
+function loadInitialUsers() {
 
-  const [datas, setDatas] = useState(userData);
+  let users = getItems('users');
+  if (users.length === 0) {
+    data.forEach((user) => {
+      addItem('users', user);
+    })
+    users = getItems('users');
+  }
+  return users;
+}
 
+const StateContext = ({ children }) => {
+  const [users, setUsers] = useState(loadInitialUsers());
   const [loginState, setLoginState] = useState(false);
-
-  const [editIndex, setIndex]= useState(0);
-
-  console.log(datas);
-  console.log(userData);
-
-
-  
-  function Adduser(name,email,address,salary,password,Phonenumber){
-    console.log(name);
-      
-      let max =  userData.map((items)=>{
-        return items.id
-       })
-       let maxnumber = max.reduce((a,b)=>{return Math.max(a,b)});
-
-       setUsers((prevstate)=>{
-        return [...prevstate,
-            {
-                id:maxnumber +1,
-                name:name,
-                email:email,
-                address:address,
-                salary:salary,
-                password:password,
-                Phonenumber:Phonenumber,
-               
-
-            
-            }
-        ]
-    })
-    setDatas((prevstate)=>{
-        return [...prevstate,
-            {
-                id:maxnumber +1,
-                name:name,
-                email:email,
-                address:address,
-                salary:salary,
-                password:password,
-                Phonenumber:Phonenumber,
-               
-
-            
-            }
-        ]
-    })
-    
+  const [editIndex, setIndex] = useState(0);
+  function Adduser(name, email, address, salary, password, Phonenumber) {
+    let users = addItem("users", {
+      name: name,
+      email: email,
+      address: address,
+      salary: salary,
+      password: password,
+      Phonenumber: Phonenumber,
+    });
+    setUsers(users)
   }
 
 
-  function Editingindex(index){
+  function Editingindex(index) {
     setIndex(index);
 
   }
 
-  function EditUser(name,email,address,salary,password,phonenumber,i){  
-    console.log();
-     datas.at(i).name = name;
-     datas.at(i).email=email;
-     datas.at(i).address = address;
-     datas.at(i).salary = salary;
-     datas.at(i).password= password;
-     datas.at(i).Phonenumber = phonenumber;
-
-     setDatas(datas);
+  function EditUser(name, email, address, salary, password, phonenumber, i) {
+    let users = editItem('users', i, {
+      name: name,
+      email: email,
+      address: address,
+      salary: salary,
+      password: password,
+      Phonenumber: phonenumber,
+    })
+    setUsers(users);
   }
 
-  function Searchuser(name){
-    console.log(name);  
-   let searchedUser =  datas.filter((items)=>{
-     if(name === items.name){
+  function Searchuser(name) {
+    console.log(name);
+    let searchedUser = users.filter((items) => {
+      if (name === items.name) {
         return items;
-     }
-   })
-    setDatas(searchedUser);
-     
+      }
+    })
+    setUsers(searchedUser);
+
 
   }
-    
 
 
 
 
-function changeLoginState(data){
+
+  function changeLoginState(data) {
     setLoginState(data);
- 
-}
 
-function SortByAccending(){
-  
-    let accendingSortedData =  datas.sort(function(a,b){
-        if(a.name < b.name){
-            return -1;
-          }
-     })
-     console.log(accendingSortedData)
-     setDatas(accendingSortedData);
-     
-}
-function SortBySalary(){
-  
-    let sortedDataBySalary =  datas.sort(function(a,b){
-        if(a.salary < b.salary){
-            return -1;
-          }
-     })
-     console.log(sortedDataBySalary);
-     setDatas(sortedDataBySalary);    
-}
-function  SortByDecending(){
-     let sortedByDecendingData = datas.sort((a,b)=>{
-        if(a.name > b.name){
-            return -1;
-        }
-     })
-     setDatas(sortedByDecendingData)
-}
+  }
+
+  function SortByAccending() {
+
+    let accendingSortedData = users.sort(function (a, b) {
+      if (a.name < b.name) {
+        return -1;
+      }
+    })
+    console.log(accendingSortedData)
+    setUsers(accendingSortedData);
+
+  }
+  function SortBySalary() {
+
+    let sortedDataBySalary = users.sort(function (a, b) {
+      if (a.salary < b.salary) {
+        return -1;
+      }
+    })
+    console.log(sortedDataBySalary);
+    setUsers(sortedDataBySalary);
+  }
+  function SortByDecending() {
+    let sortedByDecendingData = users.sort((a, b) => {
+      if (a.name > b.name) {
+        return -1;
+      }
+    })
+    setUsers(sortedByDecendingData)
+  }
 
 
-function DeleteUser(id){
+  function DeleteUser(id) {
     console.log(id)
-    let filtereddata = datas.filter((items)=> {
-        console.log(items.id)
-        if(items.id !== id){
-           return items;
-        }
+    let filtereddata = users.filter((items) => {
+      console.log(items.id)
+      if (items.id !== id) {
+        return items;
+      }
     });
     console.log(filtereddata);
-    setDatas(filtereddata);
-}
+    setUsers(filtereddata);
+  }
 
 
-    const values ={
-         datas:datas,
-         userData:userData,
-         loginState:loginState,
-         editIndex:editIndex,
-        changeLoginState:changeLoginState,
-        DeleteUser:DeleteUser,
-        SortByAccending:SortByAccending,
-        SortBySalary:SortBySalary,
-        SortByDecending:SortByDecending,
-        PutingFor:Adduser,
-        EditUser:EditUser,
-        Editingindex:Editingindex,
-        Searchuser:Searchuser,
+  const values = {
+    users: users,
+    // userData: userData,
+    loginState: loginState,
+    editIndex: editIndex,
+    changeLoginState: changeLoginState,
+    DeleteUser: DeleteUser,
+    SortByAccending: SortByAccending,
+    SortBySalary: SortBySalary,
+    SortByDecending: SortByDecending,
+    PutingFor: Adduser,
+    EditUser: EditUser,
+    Editingindex: Editingindex,
+    Searchuser: Searchuser,
 
-    }
+  }
 
-    return(<contextApi.Provider value={values}>
-        {children}
+  return (<contextApi.Provider value={values}>
+    {children}
 
-    </contextApi.Provider>)
+  </contextApi.Provider>)
 
 
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useContext } from 'react'
 import { contextApi } from '../../Context/context'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
  
 
@@ -13,6 +14,7 @@ const Login = () => {
      const loginstate = initialState.loginState;
     const ChangeTheState = initialState.changeLoginState;
      console.log(loginstate);
+     const navigate = useNavigate();
      const [error, setError] = useState("");
   
      // function to check the validation and change the state to enter homepage(user list).
@@ -25,14 +27,17 @@ const Login = () => {
       let validating = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   
       if(password.match(validating) && email.length>0){
-         data.forEach((items)=>{
-            if(email=== items.email && password === items.password){
-              ChangeTheState(true);
-               localStorage.setItem("data", JSON.stringify({email:email, password:password}));
-               window.location.reload();
-            }
+        //  data.forEach((items)=>{
+        //     if(email=== items.email && password === items.password){
+        //       // ChangeTheState(true);
+                localStorage.setItem("data", JSON.stringify({email:email, password:password}));
+        //       //  window.location.reload();  
+              
+        //     }
             
-          });
+        //   });
+
+            navigate("/")
          
 
       }
