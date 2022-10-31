@@ -13,6 +13,14 @@ export function editItem(key, index, data) {
   localStorage.setItem(key, JSON.stringify(formattedData));
   return formattedData;
 }
+export function deleteItem (key, index){
+  let initialData = localStorage.getItem(key);
+  let formattedData = initialData ? JSON.parse(initialData) : [];
+  formattedData.splice(index, 1);
+  localStorage.setItem(key, JSON.stringify(formattedData));
+  return formattedData;
+   
+}
 export function getItems(key) {
   let initialData = localStorage.getItem(key);
   initialData = initialData ? JSON.parse(initialData) : [];

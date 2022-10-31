@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { addItem, getItems, editItem } from "../Components/localstorage";
+import { addItem, getItems, editItem ,deleteItem } from "../Components/localstorage";
 import { data } from '../Userdata'
 export const contextApi = createContext();
 
@@ -102,15 +102,16 @@ const StateContext = ({ children }) => {
 
 
   function DeleteUser(id) {
-    console.log(id)
-    let filtereddata = users.filter((items) => {
-      console.log(items.id)
-      if (items.id !== id) {
-        return items;
-      }
-    });
-    console.log(filtereddata);
-    setUsers(filtereddata);
+    // console.log(id)
+    // let filtereddata = users.filter((items) => {
+    //   console.log(items.id)
+    //   if (items.id !== id) {
+    //     return items;
+    //   }
+    // });
+    // console.log(filtereddata);
+    let users = deleteItem("users",id)
+    setUsers(users);
   }
 
 
