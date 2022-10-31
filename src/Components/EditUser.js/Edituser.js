@@ -29,7 +29,7 @@ const Edituser = () => {
     const Phonenumber = document.getElementById("phonenumbers").value;
 
    let validating = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-
+    
    if(password.match(validating) && email.length>0 && Phonenumber.length<=10){
     Edit(name,email,address,salary,password,Phonenumber,index);
     toast("user edited");
@@ -41,7 +41,7 @@ const Edituser = () => {
 
    }
    else{
-    setError("fill as the requirement"); 
+    setError("password must be 8-15 character and must contain one numeric value and one uppercase"); 
    }
 
 
@@ -60,7 +60,8 @@ const Edituser = () => {
       <label>Email:</label><input className=' text-black rounded-lg' type = "text" id= "emails" placeholder={email} />
       <label>Address:</label><input className=' text-black rounded-lg' type = "text" id = "addresss" placeholder={address}/>
       <label>Salary:</label><input className=' text-black rounded-lg' type="text" id= "salarys" placeholder= {salary}/>
-      <label>Password:</label><input className=' text-black rounded-lg' type="text" id = "passwords" />
+      <label>Password:</label><input className=' text-black rounded-lg' type="password" id = "passwords" />
+      <span >{error}</span>
       <label>Phonenumber:</label><input className=' text-black rounded-lg' type="number" id= "phonenumbers" placeholder={phone}/>
       <button className='bg-secondarycolor p-2 mt-1  text-white rounded-lg'  onClick={Useredited}>Edit   user</button>
       

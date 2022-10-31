@@ -69,7 +69,7 @@ const Homepage = () => {
         <td>{items.salary}</td>
         <td>{items.Phonenumber}</td>
         <td><button className='rounded-lg p-1 pl-2 pr-2 bg-primarycolor hover:bg-secondarycolor text-white' onClick={() => Sendindexandnavigatetoedituser(i)}>Edit</button></td>
-        <td><button className='rounded-lg p-1 pl-2 pr-2 bg-red-700 hover:bg-red-900 text-white' onClick={() => userDelete(items.id)}>delete</button></td>
+        <td><button className='rounded-lg p-1 pl-2 pr-2 bg-red-700 hover:bg-red-900 text-white' onClick={() => userDelete(i)}>delete</button></td>
       </tr>
 
     )

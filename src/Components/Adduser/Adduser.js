@@ -30,12 +30,12 @@ const Adduser = () => {
     const Phonenumber = document.getElementById("phonenumber").value;
    let validating = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
-    // if(password.match(validating)){
-    //    setPasswordError("password must contain 8 character special caharcter and one uppercase");
+    if(!password.match(validating)){
+       setPasswordError("password must contain 8 character special caharcter and one uppercase");
        
    
     
-    // }
+    }
      if(email.length !==13){
        setEmailError("email is error");
     }
