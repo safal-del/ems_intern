@@ -25,7 +25,7 @@ const Navbar = () => {
    }
    function ChangeTheLoginState(){
     // ChangeTheState(false);
-    localStorage.removeItem("data");
+    localStorage.removeItem("logindata");
     window.location.reload();
    }
    

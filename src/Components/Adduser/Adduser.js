@@ -36,7 +36,7 @@ const Adduser = () => {
    
     
     }
-     if(email.length !==13){
+     if(!email.length >0){
        setEmailError("email is error");
     }
     

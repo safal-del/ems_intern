@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import { contextApi } from '../../Context/context'
-import { Link } from 'react-router-dom'
+import { json, Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
  
@@ -27,17 +27,23 @@ const Login = () => {
       let validating = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   
       if(password.match(validating) && email.length>0){
-        //  data.forEach((items)=>{
-        //     if(email=== items.email && password === items.password){
-        //       // ChangeTheState(true);
-                localStorage.setItem("data", JSON.stringify({email:email, password:password}));
-        //       //  window.location.reload();  
-              
-        //     }
-            
-        //   });
+          let userdatas = localStorage.getItem("users");
+        
+            let formatteddata = JSON.parse(userdatas);
+            console.log(formatteddata)
+            formatteddata.map((items)=>{
 
-            navigate("/")
+              if(email === items.email && password === items.password){
+                localStorage.setItem("logindata", JSON.stringify({email:email, password:password}));
+               window.location.reload();
+
+              }
+            })
+           
+
+            
+
+        
          
 
       }
