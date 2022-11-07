@@ -68,6 +68,8 @@ const Homepage = () => {
         <td>{items.address}</td>
         <td>{items.salary}</td>
         <td>{items.Phonenumber}</td>
+        <td> <img src= {`data:image/png;base64,${items.photo}`} /></td>
+        <></>
         <td><button className='rounded-lg p-1 pl-2 pr-2 bg-primarycolor hover:bg-secondarycolor text-white' onClick={() => Sendindexandnavigatetoedituser(i)}>Edit</button></td>
         <td><button className='rounded-lg p-1 pl-2 pr-2 bg-red-700 hover:bg-red-900 text-white' onClick={() => userDelete(i)}>delete</button></td>
       </tr>
@@ -79,7 +81,7 @@ const Homepage = () => {
 
       <Navbar />
       <div>
-        <div className='tablediv flex justify-center'>
+        <div className='ablediv flex justify-center'>
           <table className=' text-center w-full'>
             <tr>
               <th>Name</th>
@@ -87,6 +89,7 @@ const Homepage = () => {
               <th>Address</th>
               <th>Salary</th>
               <th>Phonenumber</th>
+              <th>photo</th>
               <th>
                 <button onClick={() => setState((prevstate) => !prevstate)}>sortby {state ? "^" : "▼"}</button>
                 {state ? <div className='z-20 block absolute bg-gray-200 w-32 h-32 ml-5 mt-3'>

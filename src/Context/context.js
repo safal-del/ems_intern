@@ -6,6 +6,7 @@ export const contextApi = createContext();
 function loadInitialUsers() {
 
   let users = getItems('users');
+   console.log(users);
   if (users.length === 0) {
     data.forEach((user) => {
       addItem('users', user);
@@ -14,12 +15,17 @@ function loadInitialUsers() {
   }
   return users;
 }
+// function loadInitialValue(){
+
+//    increasePieChartValue()
+// }
 
 const StateContext = ({ children }) => {
+
   const [users, setUsers] = useState(loadInitialUsers());
   const [loginState, setLoginState] = useState(false);
   const [editIndex, setIndex] = useState(0);
-  function Adduser(name, email, address, salary, password, Phonenumber) {
+  function Adduser(name, email, address, salary, password, Phonenumber, photo) {
     let users = addItem("users", {
       name: name,
       email: email,
@@ -27,6 +33,7 @@ const StateContext = ({ children }) => {
       salary: salary,
       password: password,
       Phonenumber: Phonenumber,
+      photo: photo,
     });
     setUsers(users)
      

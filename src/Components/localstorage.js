@@ -1,11 +1,12 @@
 
 export function addItem(key, data) {
   let initialData = localStorage.getItem(key);
-  initialData = initialData ? JSON.parse(initialData) : [];
-  initialData.push(data);
-  localStorage.setItem(key, JSON.stringify(initialData));
-  return initialData;
+ let formattedData = initialData ? JSON.parse(initialData) : [];
+  formattedData.push(data);
+  localStorage.setItem(key, JSON.stringify(formattedData));
+  return formattedData;
 }
+
 export function editItem(key, index, data) {
   let initialData = localStorage.getItem(key);
   let formattedData = initialData ? JSON.parse(initialData) : [];
@@ -32,7 +33,8 @@ export function increasePieChartValue(key, value){
 //  let data =  localStorage.getItem(key);
 //  let parseddata = data ? parseInt(value) : 0;
    localStorage.setItem(key, JSON.stringify(parseInt(value +30)));
-   window.location.reload();
+   
+  
   //  console.log(parseddata); 
 
   
@@ -40,3 +42,4 @@ export function increasePieChartValue(key, value){
    
   
 }
+
